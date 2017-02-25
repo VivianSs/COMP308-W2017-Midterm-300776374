@@ -35,19 +35,19 @@ router.get('/login', (req, res, next) => {
     // render the login page
     res.render('auth/login', {
       title: 'Login',
-      game: '',
+      book: '',
       messages: req.flash('loginMessage'),
       displayName: req.user ? req.user.displayName : ''
     });
     return;
   } else {
-    return res.redirect('/games');
+    return res.redirect('/books');
   }
 });
 
 //POST /login - process the login page
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/games',
+  successRedirect: '/books',
   failureRedirect: '/login',
   failureFlash: true
 }));
@@ -59,7 +59,7 @@ router.get('/register', (req, res, next) => {
     //render the register page 
     res.render('auth/register', {
       title: 'Register',
-      game: '',
+      book: '',
       messages: req.flash('registerMessage'),
       displayName: req.user ? req.user.displayName : ''
     });
@@ -73,7 +73,6 @@ router.post('/register', (req, res, next) => {
   User.register(
     new User({
       username: req.body.username,
-      //password: req.body.password,
       email: req.body.email,
       displayName: req.body.displayName
     }),
@@ -86,14 +85,14 @@ router.post('/register', (req, res, next) => {
         }
         return res.render('auth/register', {
           title: 'Register',
-          game: '',
+          book: '',
           messages: req.flash('registerMessage'),
           displayName: req.user ? req.user.displayName : ''
         });
       }
       // if registration is successful
       return passport.authenticate('local')(req, res, () => {
-        res.redirect('/games');
+        res.redirect('/books');
       });
     });
 
