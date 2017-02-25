@@ -1,3 +1,10 @@
+/*
+File Name: server.js
+Author Name: Sisi Li
+Student ID: 300776374
+Web App Name: COMP308-W2017-Midterm-300776374
+*/
+
 let app = require('./server/app');
 let debug = require('debug')('comp308-w2017-midterm:server');
 let http = require('http');

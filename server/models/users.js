@@ -1,3 +1,10 @@
+/*
+File Name: users.js
+Author Name: Sisi Li
+Student ID: 300776374
+Web App Name: COMP308-W2017-Midterm-300776374
+*/
+
 // require these modules for our user model
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;

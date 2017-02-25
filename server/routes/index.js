@@ -1,3 +1,10 @@
+/*
+File Name: index.js
+Author Name: Sisi Li
+Student ID: 300776374
+Web App Name: COMP308-W2017-Midterm-300776374
+*/
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
