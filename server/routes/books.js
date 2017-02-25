@@ -36,9 +36,20 @@ router.get('/add', (req, res, next) => {
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
 
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+  book.create({
+    "Title": req.body.title,
+    "Price": req.body.price,
+    "Author": req.body.author,
+    "Genre": req.body.genre
+
+  }, (err, book) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.redirect('/books');
+    }
+  });
 
 });
 
@@ -58,7 +69,7 @@ router.get('/:id', (req, res, next) => {
       //show the edit view
       res.render('books/details', {
         title: 'Books Details',
-        books:books
+        books: books
       });
     }
   });
@@ -68,27 +79,46 @@ router.get('/:id', (req, res, next) => {
 // POST - process the information passed from the details form and update the document
 router.post('/:id', (req, res, next) => {
 
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+  //get a reference to the id of the book to edit
+  let id = req.params.id;
 
+  // create a new books objet to hold the changes
+  let books = new book({
+    "_id": id,
+    "Title": req.body.title,
+    "Price": req.body.price,
+    "Author": req.body.author,
+    "Genre": req.body.genre
+  });
+  //console.log(books);
+
+  book.update({ _id: id }, books, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(error);
+    }
+    else {
+      //refresh the book list
+      res.redirect('/books');
+    }
+  });
 });
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
 
   // get a reference to the id of the book to edit
-    let id = req.params.id;
+  let id = req.params.id;
 
-    book.remove({ _id: id }, (err) => {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.redirect('/books');
-        }
-    });
+  book.remove({ _id: id }, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    }
+    else {
+      res.redirect('/books');
+    }
+  });
 
 });
 
