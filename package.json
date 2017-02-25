@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/VivianSs/COMP308-W2017-Midterm-300776374.git"
   },
   "keywords": [
     "NodeJS",
@@ -42,8 +42,5 @@
   ],
   "author": "Sisi Li",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": ""
+  "homepage": "https://github.com/VivianSs/COMP308-W2017-Midterm-300776374#readme"
 }
